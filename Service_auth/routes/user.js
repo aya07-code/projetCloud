@@ -40,7 +40,7 @@ router.delete("/:id", auth, async (req, res) => {
 });
 
 //  Rechercher user par email ou username
-router.get("/search", auth, isAdmin, async (req, res) => {
+router.get("/search", auth, async (req, res) => {
   try {
     const { email, username } = req.query;
     if (!email && !username) {
