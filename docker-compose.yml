@@ -1,37 +1,58 @@
 version: '3.8'
+
 services:
   mongodb:
     image: mongo
     container_name: mongodb
     ports:
       - "27017:27017"
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
 
   auth-service:
-    build: ./Service_auth
+    build:
+      context: ./Service_auth
+    container_name: auth-service
     ports:
-      - "5000:5000
+      - "5000:5000"
     depends_on:
       - mongodb
-      
+    restart: always
+
   project-service:
-    build: ./project-service
+    build:
+      context: ./project-service
+    container_name: project-service
     ports:
       - "8000:8000"
     depends_on:
       - mongodb
+    restart: always
 
   task-service:
-    build: ./task-service
+    build:
+      context: ./task-service
+    container_name: task-service
     ports:
-      - "5002:5002
+      - "5002:5002"
     depends_on:
       - mongodb
+    restart: always
 
   collaboration-service:
-    build: ./collaboration-service
+    build:
+      context: ./collaboration-service
+    container_name: collaboration-service
     ports:
       - "4005:4005"
+    restart: always
+
   reporting-service:
-  build: ./reporting-service
-  ports:
-    - "4006:4006"
+    build:
+      context: ./reporting-service
+    container_name: reporting-service
+    ports:
+      - "4006:4006"
+    restart: always

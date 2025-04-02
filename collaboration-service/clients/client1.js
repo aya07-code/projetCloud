@@ -4,7 +4,7 @@ const socket = io('http://localhost:4005');
 
 socket.on('connect', () => {
     console.log('User1 connecté au chat');
-    socket.emit('message', { sender: 'User1', content: 'Salut !' });
+    socket.emit('message', { sender: 'User1', content: 'hi!' });
 
     socket.on('message', (data) => {
         console.log('Message reçu par User1 :', data);
@@ -21,8 +21,8 @@ socket.on('connect', () => {
 
 //   // Envoyer un message
 //   socket1.emit("sendMessage", {
-//     projectId: "67ec9aee492a7db0974f4785", 
-//     userId: "67ec9a42492a7db0974f477f",  
+//     projectId: "67ecc980492a7db0974f47ad",
+//     userId: "67ec9a42492a7db0974f477f",
 //     content: "Hello from User 1!"
 //   });
 
